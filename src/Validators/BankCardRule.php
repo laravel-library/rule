@@ -1,11 +1,11 @@
 <?php
 
-namespace Xgbnl\Business\Validators;
+namespace Xgbnl\LaravelRule\Validators;
 
-use Xgbnl\Business\Attributes\BusinessTag;
+use Xgbnl\LaravelRule\Attributes\Tag;
 
-#[BusinessTag('银行卡验证类')]
-class BankCardValidator extends Validator
+#[Tag('银行卡规则')]
+class BankCardRule extends Rule
 {
     public function validate(string $attribute, string $value, array $parameters = [], mixed $validator = null): bool
     {

@@ -1,44 +1,48 @@
 <?php
 
-namespace Xgbnl\Business\Validators;
+namespace Xgbnl\LaravelRule\Validators;
 
+use HttpException;
+use Xgbnl\LaravelRule\Attributes\Tag;
 use Illuminate\Support\Facades\Validator as FaValidator;
 use ReflectionClass;
 use ReflectionException;
-use Xgbnl\Business\Attributes\BusinessTag;
-use Xgbnl\Business\Utils\Fail;
 
-#[BusinessTag('验证器抽象类')]
-abstract class Validator
+#[Tag('规则抽象类')]
+abstract class Rule
 {
     private static array $validators = [];
 
     /**
-     * @throws ReflectionException
+     * 存储规则
+     * @throws ReflectionException|HttpException
      */
-    final static public function registerValidator(string $rule, string $validator):void
+    final static public function storeValidator(string $rule, string $validator):void
     {
-        self::$validators[$rule] = self::instance($validator);
+        self::$validators[$rule] = self::getInstance($validator);
     }
 
     /**
+     * 实例化规则
      * @throws ReflectionException
+     * @throws HttpException
      */
-    static private function instance(string $class):object
+    static private function getInstance(string $class):object
     {
         $ref = new ReflectionClass($class);
 
         if (!$ref->isInstantiable()) {
-            Fail::throwFailException('验证器('.$class.'),不能被实例化');
+            throw new HttpException('验证器('.$class.'),不能被实例化',500);
         }
 
         return $ref->newInstance();
     }
 
     /**
+     * 注册所有验证器
      * @throws ReflectionException
      */
-    final static public function extend(): void
+    final static public function registerValidators(): void
     {
         foreach (self::$validators as $rule => $validator) {
             FaValidator::extend($rule,"{$validator}@validate",$validator->message());
