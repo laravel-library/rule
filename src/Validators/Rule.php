@@ -15,11 +15,10 @@ abstract class Rule
 
     /**
      * 存储规则
-     * @throws ReflectionException|HttpException
      */
     final static public function storeValidator(string $rule, string $validator):void
     {
-        self::$validators[$rule] = self::getInstance($validator);
+        self::$validators[$rule] = $validator;
     }
 
     /**
@@ -41,11 +40,12 @@ abstract class Rule
     /**
      * 注册所有验证器
      * @throws ReflectionException
+     * @throws HttpException
      */
     final static public function registerValidators(): void
     {
         foreach (self::$validators as $rule => $validator) {
-            FaValidator::extend($rule,"{$validator}@validate",$validator->message());
+            FaValidator::extend($rule,"{$validator}@validate",self::getInstance($validator)->message());
         }
     }
 
