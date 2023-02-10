@@ -1,28 +1,28 @@
 {
-    "name": "xgbnl/laravel-rule",
-    "description": "常用验证规则扩展",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Xgbnl\\LaravelRule\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "df",
-            "email": "745502274@qq.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Xgbnl\\LaravelRule\\Providers\\RuleServiceProvider"
-            ],
-            "aliases": {
-                "laravel-rule": "Xgbnl\\LaravelRule\\Facades\\RuleFacade"
-            }
-        }
+  "name": "xgbnl/laravel-rule",
+  "description": "自定义验证扩展",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Xgbnl\\LaravelRule\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "df",
+      "email": "745502274@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Xgbnl\\LaravelRule\\Providers\\RuleServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "ext-http": "*"
+  }
 }

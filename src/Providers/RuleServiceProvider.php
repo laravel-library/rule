@@ -6,27 +6,20 @@ use HttpException;
 use Illuminate\Support\ServiceProvider;
 use ReflectionException;
 use Xgbnl\LaravelRule\Validators\{
-    Rule,
+    Factory,
     MobileRule,
     BankCardRule,
+    CardRule,
 };
 
 class RuleServiceProvider extends ServiceProvider
 {
-    /**
-     * @throws ReflectionException
-     * @throws HttpException
-     */
     public function boot(): void
     {
-        Rule::storeValidator('bank_card', BankCardRule::class);
-        Rule::storeValidator('mobile', MobileRule::class);
-
-        Rule::registerValidators();
-    }
-
-    public function provides(): array
-    {
-        return ['laravel-rule'];
+        Factory::make()
+            ->store('mobile', MobileRule::class)
+            ->store('identityCard', CardRule::class)
+            ->store('identifyBankCard', BankCardRule::class)
+            ->register();
     }
 }
