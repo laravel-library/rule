@@ -2,9 +2,7 @@
 
 namespace Xgbnl\LaravelRule\Providers;
 
-use HttpException;
 use Illuminate\Support\ServiceProvider;
-use ReflectionException;
 use Xgbnl\LaravelRule\Validators\{
     Factory,
     MobileRule,
@@ -18,8 +16,8 @@ class RuleServiceProvider extends ServiceProvider
     {
         Factory::make()
             ->store('mobile', MobileRule::class)
-            ->store('identityCard', CardRule::class)
-            ->store('identifyBankCard', BankCardRule::class)
+            ->store('id_card', CardRule::class)
+            ->store('bank_card', BankCardRule::class)
             ->register();
     }
 }

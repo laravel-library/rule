@@ -3,9 +3,8 @@
 namespace Xgbnl\LaravelRule\Validators;
 
 use HttpException;
-use Illuminate\Support\Facades\Validator as FaValidator;
+use Illuminate\Support\Facades\Validator;
 use ReflectionClass;
-use ReflectionException;
 
 final class Factory
 {
@@ -26,7 +25,7 @@ final class Factory
     final public function register(): void
     {
         foreach ($this->validators as $rule => $validator) {
-            FaValidator::extend($rule, "{$validator}@validate", $this->getInstance($validator)->message());
+           Validator::extend($rule, "{$validator}@validate", $this->getInstance($validator)->message());
         }
     }
 
