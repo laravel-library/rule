@@ -5,6 +5,7 @@ namespace Xgbnl\LaravelRule\Validators;
 use HttpException;
 use Illuminate\Support\Facades\Validator;
 use ReflectionClass;
+use ReflectionException;
 
 final class Factory
 {
@@ -29,6 +30,10 @@ final class Factory
         }
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws HttpException
+     */
     protected function getInstance(string $class): object
     {
         $ref = new ReflectionClass($class);
