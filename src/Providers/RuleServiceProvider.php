@@ -3,12 +3,7 @@
 namespace Xgbnl\LaravelRule\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Xgbnl\LaravelRule\Validators\{
-    Factory,
-    MobileRule,
-    BankCardRule,
-    CardRule,
-};
+use Xgbnl\LaravelRule\Validators\{ChineseNameRule, Factory, MobileRule, BankCardRule, CardRule};
 
 class RuleServiceProvider extends ServiceProvider
 {
@@ -18,6 +13,7 @@ class RuleServiceProvider extends ServiceProvider
             ->store('mobile', MobileRule::class)
             ->store('id_card', CardRule::class)
             ->store('bank_card', BankCardRule::class)
+            ->store('chinese', ChineseNameRule::class)
             ->register();
     }
 }
