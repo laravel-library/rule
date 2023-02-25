@@ -2,7 +2,7 @@
 
 namespace Xgbnl\LaravelRule\Validators;
 
-final class MobileRule implements Rule
+final class PhoneRule implements Rule
 {
     public function validate(string $attribute, string $value, array $parameters = [], mixed $validator = null): bool
     {
