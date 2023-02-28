@@ -1,6 +1,6 @@
 {
   "name": "xgbnl/laravel-rule",
-  "description": "自定义验证扩展",
+  "description": "集成验证规则",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Xgbnl\\LaravelRule\\Providers\\RuleServiceProvider"
+        "Xgbnl\\LaravelRule\\LaravelRuleServiceProvider"
       ]
     }
   },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xgbnl\LaravelRule\Validators;
+namespace Xgbnl\LaravelRule\Rules;
 
 final class PhoneRule implements Rule
 {
