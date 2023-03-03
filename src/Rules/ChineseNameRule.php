@@ -7,7 +7,7 @@ class ChineseNameRule implements Rule
 
     public function verify(string $value): bool|int
     {
-        return preg_match('/^([\xe4-\xe9][\x80-\xbf]{2}){2,4}$/', $value);
+        return preg_match('/^([\x{4e00}-\x{9fa5}\.]){2,25}$/u', $value);
     }
 
     public function validate(string $attribute, string $value, array $parameters = [], mixed $validator = null): bool
@@ -17,6 +17,6 @@ class ChineseNameRule implements Rule
 
     public function message(): string
     {
-        return '姓名只能为2-4中文';
+        return '姓名格式不正确';
     }
 }
